@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeastForward - Rescue Food. Feed Lives.</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('https://images.unsplash.com/photo-1543353071-10c8ba85a904?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover fixed;
+            color: #fff;
+        }
+
+        nav {
+            padding: 1rem 5%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 8rem 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #ff6b6b;
+            animation: fadeIn 2.5s ease-in-out;
+        }
+
+        .hero .cta-button {
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            color: #fff;
+            background: #ff6b6b;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .hero .cta-button:hover {
+            background: #e64a4a;
+        }
+
+        .section {
+            padding: 4rem 5%;
+            background: rgba(0, 0, 0, 0.8);
+            margin: 2rem 0;
+        }
+
+        .how-it-works {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 107, 107, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid #ff6b6b;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ff6b6b;
+        }
+
+        .join-movement-form, .food-donation-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .join-movement-form input, .join-movement-form select, .join-movement-form textarea,
+        .food-donation-form input, .food-donation-form select, .food-donation-form textarea {
+            padding: 0.5rem;
+            border: 1px solid #ff6b6b;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        /* Style for dropdown options */
+        select option {
+            color: #000; /* Black text for better visibility */
+            background-color: #fff; /* White background for contrast */
+        }
+
+        .join-movement-form button, .food-donation-form button {
+            padding: 1rem;
+            background: #ff6b6b;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .join-movement-form button:hover, .food-donation-form button:hover {
+            background: #e64a4a;
+        }
+
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid #ff6b6b;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+        }
+
+        .testimonial-card h4 {
+            margin-top: 1rem;
+            color: #ff6b6b;
+        }
+
+        .statistics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .statistic-card {
+            padding: 2rem;
+            background: rgba(255, 107, 107, 0.1);
+            border-radius: 10px;
+            border: 1px solid #ff6b6b;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .statistic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .statistic-card h3 {
+            font-size: 2rem;
+            color: #ff6b6b;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 0.5rem;
+            border: 1px solid #ff6b6b;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .contact-form button {
+            padding: 1rem;
+            background: #ff6b6b;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background: #e64a4a;
+        }
+
+        footer {
+            padding: 2rem 5%;
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
+        }
+
+        footer .social-links a {
+            color: #ff6b6b;
+            margin: 0 1rem;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-links a:hover {
+            color: #e64a4a;
+        }
+
+        footer .newsletter {
+            margin-top: 1rem;
+        }
+
+        footer .newsletter input {
+            padding: 0.5rem;
+            border: 1px solid #ff6b6b;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        footer .newsletter button {
+            padding: 0.5rem 1rem;
+            background: #ff6b6b;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        footer .newsletter button:hover {
+            background: #e64a4a;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">FeastForward</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#join">Join</a>
+            <a href="#how">How It Works</a>
+            <a href="#features">Features</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1>Rescue Food. Feed Lives.</h1>
+        <p>Connecting surplus food with those who need it most</p>
+        <button class="cta-button">Get Started</button>
+    </section>
+
+    <!-- Join the Movement Section -->
+    <section class="section" id="join">
+        <h2>Join the Movement</h2>
+        <form class="join-movement-form" id="joinForm">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <input type="text" placeholder="Your ID" required> <!-- New Field: ID -->
+            <select id="roleSelect" required>
+                <option value="" disabled selected>Select Your Role</option>
+                <option value="restaurant">Restaurant</option>
+                <option value="event-host">Event Host</option>
+                <option value="volunteer">Volunteer</option>
+                <option value="shelter">Shelter</option>
+            </select>
+            <input type="number" placeholder="Amount of Food Left (e.g., 10 meals)" required> <!-- New Field: Amount of Food Left -->
+            <textarea placeholder="Additional Details (e.g., dietary restrictions)" rows="5"></textarea>
+            <button type="submit">Join Now</button>
+        </form>
+    </section>
+
+    <!-- Food Donation Form (Hidden by Default) -->
+    <section class="section" id="foodDonation" style="display: none;">
+        <h2>Donate Food</h2>
+        <form class="food-donation-form" id="foodDonationForm">
+            <input type="text" placeholder="Name of Food" required>
+            <input type="number" placeholder="Quantity (e.g., 10 meals)" required>
+            <input type="text" placeholder="Location" required>
+            <textarea placeholder="Additional Details (e.g., dietary restrictions)" rows="5"></textarea>
+            <button type="submit">Submit Donation</button>
+        </form>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section" id="how">
+        <h2>How It Works</h2>
+        <div class="how-it-works">
+            <div class="step">
+                <i class="icon fas fa-upload"></i>
+                <h3>Post Surplus Food</h3>
+                <p>Event hosts and restaurants upload food details</p>
+            </div>
+            <div class="step">
+                <i class="icon fas fa-bell"></i>
+                <h3>Instant Notification</h3>
+                <p>Nearby shelters receive immediate alerts</p>
+            </div>
+            <div class="step">
+                <i class="icon fas fa-people-carry"></i>
+                <h3>Volunteer Pickup</h3>
+                <p>Verified volunteers collect and deliver</p>
+            </div>
+            <div class="step">
+                <i class="icon fas fa-heart"></i>
+                <h3>Nourish Communities</h3>
+                <p>Food reaches those in need quickly</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <h2>Key Features</h2>
+        <div class="features">
+            <div class="feature-card">
+                <i class="icon fas fa-clock"></i>
+                <h3>Real-Time Tracking</h3>
+                <p>Live updates on food collection and delivery</p>
+            </div>
+            <div class="feature-card">
+                <i class="icon fas fa-brain"></i>
+                <h3>AI Matching System</h3>
+                <p>Smart algorithm prioritizes needs and distance</p>
+            </div>
+            <div class="feature-card">
+                <i class="icon fas fa-shield-alt"></i>
+                <h3>Quality Assurance</h3>
+                <p>AI freshness check ensures food safety</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section" id="testimonials">
+        <h2>What People Are Saying</h2>
+        <div class="testimonials">
+            <div class="testimonial-card">
+                <p>"FeastForward has made it so easy for us to donate surplus food. It's a win-win for everyone!"</p>
+                <h4>- John Doe, Restaurant Owner</h4>
+            </div>
+            <div class="testimonial-card">
+                <p>"The AI matching system is incredible. We receive food donations faster than ever before."</p>
+                <h4>- Jane Smith, Shelter Manager</h4>
+            </div>
+            <div class="testimonial-card">
+                <p>"Volunteering with FeastForward has been a rewarding experience. Highly recommend it!"</p>
+                <h4>- Mike Johnson, Volunteer</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="section" id="statistics">
+        <h2>Our Impact</h2>
+        <div class="statistics">
+            <div class="statistic-card">
+                <h3>10,000+</h3>
+                <p>Meals Rescued</p>
+            </div>
+            <div class="statistic-card">
+                <h3>500+</h3>
+                <p>Partners</p>
+            </div>
+            <div class="statistic-card">
+                <h3>1,000+</h3>
+                <p>Volunteers</p>
+            </div>
+            <div class="statistic-card">
+                <h3>50+</h3>
+                <p>Cities Served</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <h2>Contact Us</h2>
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <div class="newsletter">
+            <input type="email" placeholder="Subscribe to our newsletter">
+            <button>Subscribe</button>
+        </div>
+        <p>&copy; 2025 FeastForward. All rights reserved.</p>
+    </footer>
+
+    <!-- Smooth Scrolling and Form Submission Script -->
+    <script>
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    
+        // Show Food Donation Form if Role is Restaurant or Event Host
+        const joinForm = document.getElementById('joinForm');
+        const roleSelect = document.getElementById('roleSelect');
+        const foodDonationSection = document.getElementById('foodDonation');
+    
+        joinForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+    
+            // Get form data
+            const name = joinForm.querySelector('input[type="text"]').value;
+            const email = joinForm.querySelector('input[type="email"]').value;
+            const id = joinForm.querySelector('input[placeholder="Your ID"]').value; // New Field: ID
+            const role = roleSelect.value;
+            const quantity = joinForm.querySelector('input[placeholder="Amount of Food Left"]').value; // New Field: Amount of Food Left
+            const contribution = joinForm.querySelector('textarea').value;
+    
+            // Debugging: Log the form data
+            console.log({
+                name,
+                email,
+                id,
+                role,
+                quantity,
+                contribution
+            });
+    
+            // Redirect to dashboard with query parameters
+            window.location.href = `dashboard.html?role=${encodeURIComponent(role)}&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&id=${encodeURIComponent(id)}&quantity=${encodeURIComponent(quantity)}&contribution=${encodeURIComponent(contribution)}`;
+        });
+    
+        // Handle Food Donation Form Submission
+        const foodDonationForm = document.getElementById('foodDonationForm');
+    
+        foodDonationForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+    
+            // Get form data
+            const foodName = foodDonationForm.querySelector('input[type="text"]').value;
+            const quantity = foodDonationForm.querySelector('input[type="number"]').value;
+            const location = foodDonationForm.querySelector('input[type="text"]').value;
+            const details = foodDonationForm.querySelector('textarea').value;
+    
+            // Debugging: Log the form data
+            console.log({
+                foodName,
+                quantity,
+                location,
+                details
+            });
+    
+            // Redirect to dashboard with query parameters
+            window.location.href = `dashboard.html?role=restaurant&foodName=${encodeURIComponent(foodName)}&quantity=${encodeURIComponent(quantity)}&location=${encodeURIComponent(location)}&details=${encodeURIComponent(details)}`;
+        });
+    </script>
+</body>
+</html>
